@@ -11,7 +11,7 @@ import general.domain.Cliente;
 import general.services.ClienteService;
 
 @RestController
-@RequestMapping(value="/cliente")
+@RequestMapping(value="/clientes")
 public class ClienteResource {
 	
 	@Autowired

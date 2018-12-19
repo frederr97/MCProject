@@ -109,7 +109,7 @@ public class McProjectApplication implements CommandLineRunner{
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 		
 		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 2000.00, 1);
-		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 80.00, 2);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00,  80.00, 2);
 		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 800.00, 1);
 				
 		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
