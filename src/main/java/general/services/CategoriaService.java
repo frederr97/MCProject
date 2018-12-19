@@ -1,13 +1,14 @@
 package general.services;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import general.domain.Categoria;
 import general.repositories.CategoriaRepository;
+import general.services.exceptions.DataIntegrityException;
 import general.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -29,5 +30,15 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		}
+		catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos associados!");
+		}
 	}
 }
